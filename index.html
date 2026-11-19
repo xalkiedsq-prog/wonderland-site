@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WONDERLAND — Curiously good things for little ones</title>
+  <meta name="description" content="WONDERLAND is a concept store of carefully chosen toys and essentials for babies from birth to three years. A design portfolio project: no real orders or payments.">
+  <meta name="theme-color" content="#F4EFE7">
+  <meta property="og:title" content="WONDERLAND — a concept store for little ones">
+  <meta property="og:description" content="Carefully chosen toys and essentials for babies from birth to three. A design portfolio concept.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/marcellus-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/figtree-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <aside class="demo-bar" aria-label="Demo notice">
+    <span class="demo-bar__mark" aria-hidden="true"></span>
+    <p>A concept store — no real orders or payments. <a href="/about#project">About this project</a></p>
+  </aside>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+      <a class="brand" href="/" aria-label="WONDERLAND home"><span class="logo" role="img" aria-label="WONDERLAND"></span></a>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="/shop" data-nav="shop">Shop</a></li>
+          <li><a href="/shop/gift-sets" data-nav="gifts">Gifts</a></li>
+          <li><a href="/about" data-nav="about">Our Story</a></li>
+          <li><a href="/shipping-returns" data-nav="help">Help</a></li>
+        </ul>
+      </nav>
+      <button class="cart-btn" type="button" data-open-cart aria-haspopup="dialog">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5h13l-1 11a1.5 1.5 0 0 1-1.5 1.4H8a1.5 1.5 0 0 1-1.5-1.4z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>
+        <span class="cart-btn__label">Bag</span>
+        <span class="cart-btn__count" data-cart-count>0</span>
+        <span class="visually-hidden" data-cart-sr>, 0 items</span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Mobile">
+        <ul>
+          <li><a href="/shop">Shop all</a></li>
+          <li><a href="/shop/teethers">Teethers</a></li>
+          <li><a href="/shop/wooden-toys">Wooden Toys</a></li>
+          <li><a href="/shop/sensory-toys">Sensory Toys</a></li>
+          <li><a href="/shop/baby-essentials">Baby Essentials</a></li>
+          <li><a href="/shop/gift-sets">Gift Sets</a></li>
+        </ul>
+        <ul class="mobile-nav__secondary">
+          <li><a href="/about">Our Story</a></li>
+          <li><a href="/shipping-returns">Shipping &amp; Returns</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <noscript><div class="wrap noscript">WONDERLAND needs JavaScript to show the shop and the bag. Please enable it to explore the concept store.</div></noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__band" aria-hidden="true"></div>
+    <div class="wrap site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="logo logo--cream" role="img" aria-label="WONDERLAND"></span>
+        <p>Curiously good things for little ones, from birth to three.</p>
+      </div>
+      <nav aria-label="Shop" class="site-footer__col">
+        <h2>Shop</h2>
+        <ul>
+          <li><a href="/shop/teethers">Teethers</a></li>
+          <li><a href="/shop/wooden-toys">Wooden Toys</a></li>
+          <li><a href="/shop/sensory-toys">Sensory Toys</a></li>
+          <li><a href="/shop/baby-essentials">Baby Essentials</a></li>
+          <li><a href="/shop/gift-sets">Gift Sets</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Help" class="site-footer__col">
+        <h2>Help</h2>
+        <ul>
+          <li><a href="/shipping-returns">Shipping &amp; Returns</a></li>
+          <li><a href="/shipping-returns#faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/about">Our Story</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col site-footer__news">
+        <h2>Letters from Wonderland</h2>
+        <p>Occasional notes on new arrivals and gift ideas.</p>
+        <form class="inline-form" data-demo-form="newsletter" novalidate>
+          <label class="visually-hidden" for="nl-email">Email address</label>
+          <input id="nl-email" name="email" type="email" autocomplete="email" placeholder="Email address" required>
+          <button class="btn btn--cream" type="submit">Sign up</button>
+          <p class="field-msg" data-msg aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    <div class="wrap site-footer__legal">
+      <p>WONDERLAND is a concept store created for a design portfolio. Products, prices and policies are illustrative; nothing on this site can be purchased.</p>
+      <p>© 2026 WONDERLAND concept</p>
+    </div>
+  </footer>
+
+  <div class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer__scrim" data-close-cart></div>
+    <div class="drawer__panel" tabindex="-1">
+      <div class="drawer__head">
+        <h2 id="drawer-title">Your bag</h2>
+        <button class="icon-btn" type="button" data-close-cart aria-label="Close bag">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="drawer__body" data-drawer-body></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="visually-hidden" id="sr-status" role="status" aria-live="polite"></div>
+</body>
+</html>

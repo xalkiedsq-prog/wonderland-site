@@ -1,0 +1,17 @@
+{
+  "name": "wonderland-concept-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WONDERLAND: a concept e-commerce store for babies 0–3 (design portfolio project).",
+  "type": "module",
+  "scripts": {
+    "start": "node tests/server.mjs . 4173",
+    "test": "node tests/e2e.mjs",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "playwright": "^1.50.0",
+    "sharp": "^0.34.0"
+  }
+}
