@@ -525,7 +525,7 @@ body.drawer-open, body.nav-open { overflow: hidden; }
 
 /* ── Footer ────────────────────────────────────────────────── */
 .site-footer { background: var(--plum); color: var(--cream); margin-top: 0; }
-.site-footer__band { height: 64px; background: url('/assets/img/site/checker-sage-1000.webp') center 40%/cover; }
+.site-footer__band { height: 64px; background: var(--cream) url('/assets/brand/checker-band-sage.svg') left top / auto 100% repeat-x; }
 .site-footer__grid { display: grid; grid-template-columns: 1.3fr 0.7fr 0.7fr 1.3fr; gap: clamp(28px, 4vw, 56px); padding-top: 64px; padding-bottom: 48px; }
 .site-footer__brand p { margin-top: 18px; color: #D9CFD8; max-width: 18em; }
 .site-footer h2 { font: 400 0.84rem/1.2 var(--f-caps); letter-spacing: 0.14em; color: #CFC3CE; margin-bottom: 16px; }
