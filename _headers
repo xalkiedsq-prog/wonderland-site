@@ -5,8 +5,20 @@
   X-Frame-Options: SAMEORIGIN
   Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
+# Code and styles: always revalidate (cheap 304 via ETag), so every deploy shows up immediately.
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Images and brand graphics: short cache, revalidated afterwards.
+/assets/img/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+/assets/brand/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+# Fonts never change under the same name.
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
-
-/assets/*
-  Cache-Control: public, max-age=3600
