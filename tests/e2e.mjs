@@ -162,6 +162,19 @@ for (const [path, text] of [
   ok((await page.locator('main').innerText()).includes(text), `${path} shows "${text}"`);
 }
 
+step('SEO metadata');
+await page.goto(BASE + '/product/walnut-push-car');
+ok((await page.getAttribute('meta[name=description]', 'content')).startsWith('A palm-sized car'), 'product meta description');
+ok((await page.getAttribute('link[rel=canonical]', 'href')).endsWith('/product/walnut-push-car'), 'canonical url');
+ok((await page.getAttribute('meta[property="og:image"]', 'content')).endsWith('og-image.jpg'), 'og:image');
+ok((await page.locator('meta[name=robots]').count()) === 0, 'product indexable');
+await page.goto(BASE + '/nope');
+ok((await page.getAttribute('meta[name=robots]', 'content')) === 'noindex', '404 noindex');
+for (const f of ['/robots.txt', '/sitemap.xml', '/assets/img/site/og-image.jpg']) {
+  const r = await page.request.get(BASE + f);
+  ok(r.ok() && !(r.headers()['content-type'] || '').includes('text/html'), `${f} served as a file`);
+}
+
 step('Mobile menu');
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto(BASE + '/');

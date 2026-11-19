@@ -49,6 +49,7 @@ function render() {
   if (result.redirect) return navigate(result.redirect, { replace: true });
 
   document.title = result.title ? `${result.title} — WONDERLAND` : 'WONDERLAND — Curiously good things for little ones';
+  setMeta(url, result);
   main.innerHTML = result.html;
   main.dataset.view = result.name || '';
   cleanup = result.mount?.(main) || null;
@@ -75,6 +76,29 @@ function render() {
     }
   }
   firstRender = false;
+}
+
+// Per-page metadata for search engines and link previews.
+const SITE = 'https://wonderlandbabyshop.pages.dev';
+const DEFAULT_DESC = document.querySelector('meta[name="description"]').content;
+function setMeta(url, result) {
+  const desc = result.description || DEFAULT_DESC;
+  const canonical = SITE + url.pathname + (url.pathname.startsWith('/shop') && url.searchParams.get('age') ? `?age=${url.searchParams.get('age')}` : '');
+  const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+  set('meta[name="description"]', 'content', desc);
+  set('meta[property="og:description"]', 'content', desc);
+  set('meta[property="og:title"]', 'content', document.title);
+  set('meta[property="og:url"]', 'content', canonical);
+  set('link[rel="canonical"]', 'href', canonical);
+  let robots = document.querySelector('meta[name="robots"]');
+  if (result.noindex) {
+    if (!robots) {
+      robots = document.createElement('meta');
+      robots.name = 'robots';
+      document.head.append(robots);
+    }
+    robots.content = 'noindex';
+  } else robots?.remove();
 }
 
 function setActiveNav(path) {

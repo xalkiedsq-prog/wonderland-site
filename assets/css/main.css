@@ -209,7 +209,7 @@ h1[tabindex="-1"]:focus, .co-form__title:focus { outline: none; }
 .badge .glyph { width: 12px; color: var(--sage); }
 
 /* Photo frame + branded placeholder */
-.photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--tone-t); isolation: isolate; }
+.photo { display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--tone-t); isolation: isolate; }
 .photo__ph { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 18px; padding: 12%; }
 .photo__ph::before { content: ''; position: absolute; inset: 9%; border: 1.5px dashed color-mix(in srgb, var(--tone) 38%, transparent); border-radius: 999px 999px 16px 16px; }
 .photo__glyph { width: 34%; max-width: 120px; color: var(--tone); opacity: 0.9; }
@@ -377,6 +377,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
 .line__name a { text-decoration: none; } .line__name a:hover { text-decoration: underline; }
 .line__opt, .line__unit { font-size: 0.86rem; color: var(--ink-soft); }
 .line__controls { display: grid; justify-items: end; gap: 8px; }
+.line__remove { min-height: 28px; padding: 4px 0; }
 .line__total { font-weight: 600; font-variant-numeric: tabular-nums; }
 .line--compact { grid-template-columns: 76px 1fr; }
 .line--compact .line__controls { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }

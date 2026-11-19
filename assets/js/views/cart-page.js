@@ -33,6 +33,7 @@ export default function cartPage() {
   return {
     name: 'cart',
     title: 'Your bag',
+    noindex: true,
     html: `<div class="wrap page">
       <h1 class="h1 page__title">Your bag</h1>
       <div data-bag>${body()}</div>

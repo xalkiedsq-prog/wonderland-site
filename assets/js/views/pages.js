@@ -15,6 +15,7 @@ const head = (title, lede, tone = 'paper', g = 'smile', crumb) => `
 export function about() {
   return {
     name: 'about',
+    description: 'WONDERLAND brings together a short list of toys and everyday things for the first three years. Fewer pieces, chosen slowly.',
     title: 'Our Story',
     html: `${head('A small shop for the very beginning', 'WONDERLAND brings together a short list of toys and everyday things for the first three years. Fewer pieces, chosen slowly.', 'lilac', 'key', 'Our Story')}
     <div class="wrap prose-grid">
@@ -32,9 +33,9 @@ export function about() {
         <h2 class="h2">The name</h2>
         <p>Every child is a little explorer of a world that is new and slightly strange. We borrowed the name, and a curious grin, from the most famous explorer of them all.</p>
       </div>
-      <aside class="about-art" aria-hidden="true">
+      <div class="about-art" aria-hidden="true">
         <div class="arch arch--about"><div class="arch__checker arch__checker--plum"></div><span class="arch__smile">${glyph('smile')}</span></div>
-      </aside>
+      </div>
     </div>
     <section class="section section--cream" id="project" aria-labelledby="project-title">
       <div class="wrap project">
@@ -62,6 +63,7 @@ export function shipping() {
   const [std, exp] = SHIPPING.methods;
   return {
     name: 'help',
+    description: 'Shipping options, 30-day returns, gift wrapping and answers to common questions at the WONDERLAND concept store.',
     title: 'Shipping & Returns',
     html: `${head('Shipping & Returns', 'Clear, simple policies, written for the concept. They show how the store would work; no orders are actually shipped.', 'sage', 'rabbit')}
     <div class="wrap help">
@@ -106,12 +108,13 @@ export function shipping() {
 export function contact() {
   return {
     name: 'contact',
+    description: 'Questions about a product, a gift or the WONDERLAND project itself? Leave a note.',
     title: 'Contact',
     html: `${head('Say hello', 'Questions about a product, a gift or the project itself? Leave a note below.', 'ochre', 'spiral', 'Contact')}
     <div class="wrap contact">
       <form class="contact__form" data-demo-form="contact" novalidate>
         <div class="fields">
-          <div class="field"><label for="c-name">Your name</label><input id="c-name" name="name" autocomplete="name" required data-label="name"></div>
+          <div class="field"><label for="c-name">Your name</label><input id="c-name" name="name" type="text" autocomplete="name" required data-label="name"></div>
           <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required data-label="email"></div>
           <div class="field field--wide"><label for="c-topic">Topic</label>
             <select id="c-topic" name="topic"><option>A product question</option><option>Gifting</option><option>Shipping &amp; returns</option><option>About the project</option><option>Something else</option></select></div>
@@ -120,7 +123,7 @@ export function contact() {
         <button class="btn btn--lg" type="submit">Send note ${icon('arrow')}</button>
         <p class="field-msg" data-msg aria-live="polite"></p>
       </form>
-      <aside class="contact__aside">
+      <aside class="contact__aside" aria-label="About this form">
         <div class="info-card">
           ${icon('info')}
           <h2>A note on this form</h2>
@@ -139,6 +142,7 @@ export function contact() {
 export function notFound() {
   return {
     name: 'notfound',
+    noindex: true,
     title: 'Page not found',
     html: `<section class="lost">
       <div class="lost__bg" aria-hidden="true"></div>

@@ -49,6 +49,7 @@ export default function shop({ params, query }) {
 
   return {
     name: 'shop',
+    description: blurb,
     title: ageName && !cat ? `Shop ${ageName}` : title,
     html: `
     <section class="page-head page-head--${tone} ${isGifts ? 'page-head--gifts' : ''}">

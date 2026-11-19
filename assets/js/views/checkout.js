@@ -68,6 +68,7 @@ export default function checkout({ navigate }) {
     return {
       name: 'checkout',
       title: 'Checkout',
+    noindex: true,
       html: `<div class="wrap page"><h1 class="h1 page__title">Checkout</h1>${emptyBag()}</div>`,
     };
   }
@@ -195,6 +196,7 @@ export default function checkout({ navigate }) {
   return {
     name: 'checkout',
     title: 'Checkout',
+    noindex: true,
     html: `<div class="wrap page checkout">
       <div class="checkout__head">
         <h1 class="h1 page__title">Checkout</h1>

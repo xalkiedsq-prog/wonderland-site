@@ -43,16 +43,19 @@ export function icon(name, cls = '') {
  * Product image frame. A branded placeholder is always rendered underneath;
  * the photo covers it once it loads, and is removed if the file is missing.
  */
-export function photo(p, index = 0, { cls = '', eager = false, sizes = '(min-width: 900px) 30vw, 50vw' } = {}) {
+export function photo(p, index = 0, { cls = '', eager = false, sizes = '(min-width: 900px) 30vw, 50vw', inline = false } = {}) {
   const cat = categoryOf(p.category);
   const src = p.images?.[index];
-  return `<div class="photo tone-${cat.tone} ${cls}" data-photo>
-    <div class="photo__ph" aria-hidden="true">
+  // Inside buttons only phrasing content is allowed, so use <span> wrappers there.
+  const tag = inline ? 'span' : 'div';
+  const srcset = src ? [480, 768].map((w) => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).concat(`${src} 1024w`).join(', ') : '';
+  return `<${tag} class="photo tone-${cat.tone} ${cls}" data-photo>
+    <${tag} class="photo__ph" aria-hidden="true">
       ${glyph(cat.icon, 'photo__glyph')}
       <span class="photo__name">${esc(p.name)}</span>
-    </div>
-    ${src ? `<img src="${src}" alt="${esc(altFor(p, index))}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" sizes="${sizes}" width="1600" height="2000">` : ''}
-  </div>`;
+    </${tag}>
+    ${src ? `<img src="${src}" srcset="${srcset}" sizes="${sizes}" alt="${esc(altFor(p, index))}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="1024" height="1280">` : ''}
+  </${tag}>`;
 }
 export function altFor(p, i) {
   return [`${p.name}`, `${p.name}, close-up detail`, `${p.name} in use`][i] || p.name;
@@ -63,7 +66,7 @@ export function productCard(p, { headingLevel = 3 } = {}) {
   const h = `h${headingLevel}`;
   return `<article class="card">
     <a class="card__link" href="/product/${p.id}">
-      ${photo(p, 0)}
+      ${photo(p, 0, { sizes: '(min-width: 1100px) 300px, (min-width: 640px) 45vw, 48vw' })}
       <div class="card__body">
         <p class="card__meta"><span class="dot tone-${cat.tone}"></span>${esc(p.occasion || cat.name)}</p>
         <${h} class="card__title">${esc(p.name)}</${h}>

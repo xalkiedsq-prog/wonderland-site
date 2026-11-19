@@ -12,6 +12,7 @@ export default function complete() {
     return {
       name: 'complete',
       title: 'Order',
+      noindex: true,
       html: `<div class="wrap page"><div class="empty">${glyph('smile', 'empty__smile')}<h1 class="empty__title">No recent demo order</h1><p class="empty__text">Orders placed in this demo are kept only for the current browser tab.</p><a class="btn" href="/shop">Browse the shop</a></div></div>`,
     };
   }
@@ -19,6 +20,7 @@ export default function complete() {
   return {
     name: 'complete',
     title: 'Demo order complete',
+    noindex: true,
     html: `<section class="done">
       <div class="done__bg" aria-hidden="true"></div>
       <div class="wrap">

@@ -40,19 +40,20 @@ export default function product({ params }) {
   return {
     name: 'product',
     title: p.name,
+    description: `${p.short} ${p.occasion ? p.occasion + '. ' : ''}Best for ${ageLabel(p.ages)}. ${money(p.price)}.`,
     html: `
     <div class="wrap pdp">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/shop">Shop</a></li><li><a href="/shop/${cat.slug}">${esc(cat.name)}</a></li><li aria-current="page">${esc(p.name)}</li></ol></nav>
 
       <div class="pdp__grid">
         <div class="gallery" data-gallery>
-          <div class="gallery__main" data-main>${photo(p, 0, { eager: true, sizes: '(min-width: 900px) 50vw, 100vw' })}</div>
+          <div class="gallery__main" data-main>${photo(p, 0, { eager: true, sizes: '(min-width: 900px) 46vw, 100vw' })}</div>
           ${
             p.images.length > 1
               ? `<ul class="gallery__thumbs" aria-label="Product images">${p.images
                   .map(
                     (_, i) =>
-                      `<li data-thumb><button type="button" class="thumb" data-index="${i}" aria-label="Show image ${i + 1}: ${esc(altFor(p, i))}" ${i === 0 ? 'aria-current="true"' : ''}>${photo(p, i, { sizes: '96px' })}</button></li>`,
+                      `<li data-thumb><button type="button" class="thumb" data-index="${i}" aria-label="Show image ${i + 1}: ${esc(altFor(p, i))}" ${i === 0 ? 'aria-current="true"' : ''}>${photo(p, i, { sizes: '96px', inline: true })}</button></li>`,
                   )
                   .join('')}</ul>`
               : ''
@@ -149,7 +150,7 @@ export default function product({ params }) {
         const t = e.target.closest('.thumb');
         if (!t) return;
         const i = Number(t.dataset.index);
-        main.innerHTML = photo(p, i, { eager: true, sizes: '(min-width: 900px) 50vw, 100vw' });
+        main.innerHTML = photo(p, i, { eager: true, sizes: '(min-width: 900px) 46vw, 100vw' });
         root.querySelectorAll('.thumb').forEach((x) => x.removeAttribute('aria-current'));
         t.setAttribute('aria-current', 'true');
       });

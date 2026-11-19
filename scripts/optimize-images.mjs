@@ -39,5 +39,11 @@ for (const f of files) {
     .resize(1024, 1280, { kernel: 'lanczos3', withoutEnlargement: true })
     .webp({ quality: 84, effort: 6, smartSubsample: true })
     .toFile(out);
+  // Smaller variants for srcset (product photos only).
+  if (base !== 'hero') {
+    for (const w of [480, 768]) {
+      await sharp(out).resize(w, Math.round(w * 1.25), { kernel: 'lanczos3' }).webp({ quality: 82, effort: 6 }).toFile(out.replace(/\.webp$/, `-${w}.webp`));
+    }
+  }
   console.log('✓', out);
 }
