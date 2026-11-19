@@ -18,8 +18,9 @@ const ok = (cond, msg) => {
 };
 const step = (t) => console.log('•', t);
 
-const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+const proxy = process.env.HTTPS_PROXY && /^https:/.test(BASE) ? { proxy: { server: process.env.HTTPS_PROXY } } : {};
+const browser = await chromium.launch(proxy);
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, bypassCSP: true }); // CSP bypass only so axe can be injected
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));

@@ -27,7 +27,6 @@ export default function home() {
             <img class="arch__img" src="/assets/img/site/hero.webp" alt="A wooden arch stacker and a cloud teether on a cream knit blanket" fetchpriority="high" width="1600" height="2000" data-optional>
             <span class="arch__smile" aria-hidden="true">${glyph('smile')}</span>
           </div>
-          <span class="hero__sticker" aria-hidden="true">${glyph('rabbit')}</span>
         </div>
       </div>
     </section>

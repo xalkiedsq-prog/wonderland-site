@@ -163,8 +163,6 @@ h1[tabindex="-1"]:focus, .co-form__title:focus { outline: none; }
 .arch__img.is-loaded { opacity: 1; }
 .arch__smile { position: absolute; left: 50%; top: 54%; width: 54%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--plum); color: var(--cream); display: grid; place-items: center; }
 .arch__smile .glyph { width: 70%; margin-top: 12%; }
-.hero__sticker { position: absolute; left: -18px; bottom: 34px; z-index: 2; width: 112px; height: 112px; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 8px var(--paper); display: grid; place-items: center; color: var(--plum); }
-.hero__sticker .glyph { width: 58px; }
 
 /* ── Category tiles ────────────────────────────────────────── */
 .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -574,8 +572,6 @@ body.drawer-open .toast { display: none; }
   .cart-btn { padding: 0 10px; border: 0; background: transparent; }
   .hero__grid, .age, .gifts-band__grid, .pdp__grid, .prose-grid, .contact { grid-template-columns: 1fr; }
   .hero__art { width: min(100%, 380px); }
-  .hero__sticker { width: 88px; height: 88px; left: -8px; }
-  .hero__sticker .glyph { width: 46px; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .principles__list { grid-template-columns: 1fr; gap: 36px; }
   .gallery { position: static; grid-template-columns: 1fr; }
