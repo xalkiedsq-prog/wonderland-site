@@ -12,12 +12,12 @@
    npm run images
    ```
    Скрипт обрежет их до 4:5, уменьшит до 1200 × 1500 и сохранит в `assets/img/products/*.webp` (а `hero.png` — в `assets/img/site/hero.webp`). Можно просто прислать файлы Claude — он сделает это сам.
-4. Сайт подхватывает фото автоматически. Пока какого-то снимка нет, на его месте остаётся фирменная заглушка. Третий снимок (lifestyle) необязателен: если его нет, галерея покажет только первые два.
+4. Сайт подхватывает фото автоматически. Пока какого-то снимка нет, на его месте остаётся фирменная заглушка. Третий снимок (lifestyle) необязателен. Сейчас сайт показывает два снимка на товар; чтобы подключить `-3`, в `assets/js/data.js` поменяйте `n = 2` на `n = 3` в строке `const P = (slug, n = 2)`.
 
 ## Стилевой блок (вставлять в начало каждого промпта)
 
 ```
-Premium product photography for a high-end baby boutique. Shot on a medium-format camera, 85mm lens, f/5.6. Soft, diffused north-window daylight from the left, gentle natural shadow falling to the right, no harsh highlights. Seamless warm cream paper backdrop (#E8DFD0) with a very subtle paper texture. Muted, earthy palette: cream, oat, dusty lilac (#9A879C), sage green (#596052), soft ochre (#A58B62), deep plum (#302333). Calm, minimal, editorial composition with generous negative space; the product is centered with clear margins on all sides. Realistic materials and true-to-life textures. No text, no logos, no labels, no watermarks, no props unless described. Vertical 2:3 frame.
+Premium product photography for a high-end baby boutique. Shot on a medium-format camera, 85mm lens, f/5.6. Soft, diffused north-window daylight from the left, gentle natural shadow falling to the right, no harsh highlights. Seamless warm cream paper backdrop (#E8DFD0) with a very subtle paper texture. Muted, earthy palette: cream, oat, dusty lilac (#9A879C), sage green (#596052), soft ochre (#A58B62), deep plum (#302333). Calm, minimal, editorial composition with generous negative space; the product is centered with clear margins on all sides. Realistic materials and true-to-life textures. No text, no logos, no labels, no watermarks, no props unless described. Vertical 2:3 frame, 1024 × 1536 px, maximum quality, photorealistic, ultra-detailed.
 ```
 
 **Для снимков `-2` (деталь)** добавьте: `Close-up macro detail, shallow depth of field, focus on texture and craftsmanship.`

@@ -56,7 +56,7 @@ export const SHIPPING = {
   giftWrap: 6,
 };
 
-const P = (slug, n = 3) => Array.from({ length: n }, (_, i) => `/assets/img/products/${slug}-${i + 1}.webp`);
+const P = (slug, n = 2) => Array.from({ length: n }, (_, i) => `/assets/img/products/${slug}-${i + 1}.webp`);
 
 export const PRODUCTS = [
   // ── Teethers ──────────────────────────────────────────────

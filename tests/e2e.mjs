@@ -195,6 +195,39 @@ for (const r of routes) {
   ok(res.length === 0, `axe ${r}: ${res.join('; ')}`);
 }
 
+step('Product photos');
+{
+  const { PRODUCTS } = await import('../assets/js/data.js').catch(() => ({ PRODUCTS: null }));
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const bad = [];
+  let loaded = 0;
+  const all = PRODUCTS || [];
+  for (const p of all) {
+    await page.goto(`${BASE}/product/${p.id}`);
+    for (let i = 0; i < p.images.length; i++) {
+      const res = await page.evaluate(async (src) => {
+        const img = new Image();
+        img.src = src;
+        try { await img.decode(); return img.naturalWidth; } catch { return 0; }
+      }, p.images[i]);
+      if (res > 0) loaded++;
+      else bad.push(p.images[i]);
+    }
+    await page.waitForFunction(() => document.querySelector('.gallery__main [data-photo]')?.classList.contains('is-loaded'), null, { timeout: 5000 }).catch(() => bad.push(p.id + ' main not shown'));
+  }
+  const hero = await page.evaluate(async () => { const i = new Image(); i.src = '/assets/img/site/hero.webp'; try { await i.decode(); return i.naturalWidth; } catch { return 0; } });
+  if (hero) loaded++; else bad.push('hero');
+  ok(bad.length === 0, 'broken photos: ' + bad.join(', '));
+  console.log(`  photos decoded: ${loaded}`);
+  for (const path of ['/', '/shop', '/shop/gift-sets']) {
+    await page.goto(BASE + path);
+    await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); } });
+    await page.waitForTimeout(500);
+    const missing = await page.evaluate(() => [...document.querySelectorAll('[data-photo]')].filter((el) => !el.classList.contains('is-loaded')).length);
+    ok(missing === 0, `${path}: ${missing} placeholders still visible`);
+  }
+}
+
 ok(errors.length === 0, 'no JS errors: ' + errors.join(' | '));
 await browser.close();
 console.log(`\n${pass} passed, ${fail} failed`);

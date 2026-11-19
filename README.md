@@ -40,7 +40,7 @@ npm test             # in a second terminal (needs: npx playwright install chrom
 
 ## Product photos
 
-See `docs/IMAGE_PROMPTS.md`. Drop generated files into `incoming/` using the exact names from that document and run `npm run images`. Missing photos fall back to branded placeholders automatically.
+See `docs/IMAGE_PROMPTS.md`. Drop generated files into `incoming/` using the exact names from that document and run `npm run images`. Missing photos fall back to branded placeholders automatically. Each product currently uses two photos (`-1` main, `-2` detail); to add the optional `-3` lifestyle shots, raise the count in `const P = (slug, n = 2)` in `assets/js/data.js`. Per-image crop tweaks live in `CROP_Y` inside `scripts/optimize-images.mjs`.
 
 ## Deploy (Cloudflare Pages)
 
